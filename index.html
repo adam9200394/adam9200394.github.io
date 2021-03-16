@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js"></script> -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-H0NW5Z2MYC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-H0NW5Z2MYC');
+    </script>
+     <script src="moz-extension://8b40177a-9d1f-4737-88ca-05642344e12e/js/app.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="./static/css/atelier-estuary-light.css">
+   
+    
+    <title>project </title>
+</head>
+<body>
+  <header>
+    
+    <nav>
+      <div class="nav-wrapper teal lighten-5">
+        <a href="#!" class="brand-logo i-logo teal-text">Digit Recognition using DL</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="waves-effect waves-light btn teal-text text-darken-3 teal lighten-4">App <i class="material-icons right">cloud</i></a></li>
+          <li><a class="waves-effect waves-light btn teal-text text-lighten-4 teal lighten-1">documention <i class="material-icons right">folder_open</i></a></li>
+        </ul>
+      </div>
+    </nav>
+
+  </header>
+    <main>
+      <div class="container">
+        <section id='doc'>
+         <h3>introduction</h3>
+         
+            <p>this model try to geuss the value hand writing number </p>
+            <p>Ingredients and steps:</p>
+            <ul>
+            <li>1- Training Data</li>
+            <li>2- Training Environment</li>
+            <li>3- Pre-processing Data</li>
+            <li>4- Machine Learning</li>
+            <li>5- Convert a Keras model to Tensorflow.js</li>
+            <li>6- HTML5 Canvas</li>
+            <li>7- Hooking everything up</li>
+            </ul>
+          
+        </section>
+        
+       <div class="divider"></div>
+       <section id="App">
+         <h3>  App </h3>
+          <div>
+            <p> this appliction take input data from the user and output the predicted value  </p>
+            <p> use the mouse to draw something or touch for mobile:  </p>
+              <div class="container app">
+                <h5>input</h5>
+
+               <div id="paint" style="width: 300px; height: 300px;" class="paint">
+               <canvas id="myCanvas" width="300" height="300" ></canvas>
+               </div>
+
+                <h5>output</h5>
+
+                <div id="predicted" class="paint">
+                    <div id="number" style="width: 150px; font-size: 120px; height: 150px;">
+                  
+                    </div>
+
+                </div>
+              </div>
+              <button id="clear" style="font-size: 15px; margin-buttom: 15px" class="btn"> Clear</button>
+          </div>
+       </section>
+       <div class="divider"></div>
+       <section id="code">
+          <h3> code</h3>
+            <div class="container">
+              <pre><code class="lang-python">
+    from tensorflow.keras.datasets import mnist
+    import matplotlib.pyplot as plt
+    (X_train, y_train), (X_test, y_test) = mnist.load_data()
+
+    #taking a look at the data shape
+
+    print ("X_train.shape: {}".format(X_train.shape))
+    print ("y_train.shape: {}".format(y_train.shape))
+    print ("X_test.shape: {}".format(X_test.shape))
+    print ("y_test.shape: {}".format(y_test.shape))
+
+    # Normalize Inputs from 0–255 to 0–1
+    
+    x_train = x_train / 255
+    x_test = x_test / 255
+    
+    # One-Hot Encode outputs
+    
+    y_train = np_utils.to_categorical(y_train)
+    y_test = np_utils.to_categorical(y_test)
+    num_classes = 10
+
+    #building the model
+
+    x_train_deep_model = x_train.reshape((60000, 28, 28, 1)).astype('float32')
+    x_test_deep_model = x_test.reshape((10000, 28, 28, 1)).astype('float32')
+
+    deep_model = Sequential()
+    deep_model.add(Conv2D(30, (5, 5), input_shape=(28, 28, 1), activation='relu'))
+
+    deep_model.add(MaxPooling2D())
+    deep_model.add(Conv2D(15, (3, 3), activation='relu'))
+    deep_model.add(MaxPooling2D())
+    deep_model.add(Dropout(0.2))
+    eep_model.add(Flatten())
+    deep_model.add(Dense(128, activation='relu'))
+    deep_model.add(Dense(50, activation='relu'))
+    deep_model.add(Dense(num_classes, activation='softmax'))
+
+    deep_model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    deep_model.fit(x_train_deep_model, y_train, validation_data=(x_test_deep_model, y_test), epochs=30, batch_size=200, verbose=2)
+
+                
+  
+              </code></pre>
+            </div>
+          
+
+       </section>
+      </div>
+    </main>
+    
+     
+   
+    <footer class="page-footer teal lighten-5">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+           
+              <div class="col s12 m8 offset-m2 l6 offset-l3">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                  <div class="row valign-wrapper">
+                    <div class="col l8 s4">
+                     
+                    </div>
+                    <div class="col s10">
+                      <span class="black-text">
+                        <p>name</p>
+                        <p>email</p>
+                        <p>phone</p>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="teal-text text-darken-3">refrences</h5>
+            <ul>
+              <li><a class="teal-text text-darken-3" href="#!">Link 1</a></li>
+              <li><a class="teal-text text-darken-3" href="#!">Link 2</a></li>
+    
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+    
+        <a class="teal-text text-darken-3 right" href="#!"></a>
+        </div>
+      </div>
+    </footer>
+        
+    
+      
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js"></script>     
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="./static/js/predict.js"></script>
+    <script src="./static/js/highlight.pack.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script> hljs.highlightAll();</script>
+   
+</body>
+</html>

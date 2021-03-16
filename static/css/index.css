@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+.i-container {
+    background-color: '#e1f5fe' !important;
+   
+}
+.paint {
+  border-width: .5px;
+  border-radius: 5px;
+  border-style: dotted;
+  margin: 8px
+}
+.i-logo {
+    margin-left: 16px;
+}
+img {
+    max-width: 100%;
+    height:auto
+}
+.submit {
+  color: white;
+}
