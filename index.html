@@ -55,10 +55,51 @@
             <li>6- HTML5 Canvas</li>
             <li>7- Hooking everything up</li>
             </ul>
-          
+            <div class="divider"></div>
+            <h5>traing datat</h5>
+              <p>We are going to use the MNIST dataset, which is a dataset of handwritten digits. In this dataset, you have 60,000 images, all of them are of size 28 x 28 pixels in grayscale, with pixel values from 0 to 255.</p>
+            <div class="divider"></div>
+
+            <h5>traing Environment</h5>
+            <p>we need to create a new Environment and install all the package we going to use
+              using pip install tensorflow/keras/numpy and so on 
+            </p>
+            <div class="container">
+              <pre>
+                <code class="lang-python">
+                    #examples
+                    pip install tensorflow
+                    pip install numpy 
+                    pip install sklearn
+                    pip pandas
+                </code>
+              </pre>
+            </div>
+            <p>or use jupyter or whatever.</p>
+
+            <div class="divider"></div>
+
+            <h5>Pre-processing data</h5>
+            <p>you process you'r data in any shape you desire; but in our case here we what we need is  </p>
+           
+              <ul>
+                <li>a- the image pixels data are from 0 to 255 for every pixle</li>
+                <li>b- we need to tone that down to value between 0 and 1 </li>
+                <li>c- so divid by 255 for evey pixle</li>
+              </ul>
+            <h5>finaly machine learing</h5>
+            <p>her what we need to do is start with simple model and then define it how we need to
+              the </p>
+              <p>we you call the Sequential function it return an object that then you can cusomizr the model with</p>
+              <p >for example dife the numper of inputs add custome number of hidden lyers and activation function</p>
+
+
+              
+           
+
         </section>
         
-       <div class="divider"></div>
+       <div class="divider sep" style="margin-top: 10px;"></div>
        <section id="App">
          <h3>  App </h3>
           <div>
@@ -80,10 +121,10 @@
 
                 </div>
               </div>
-              <button id="clear" style="font-size: 15px; margin-buttom: 15px" class="btn"> Clear</button>
+              <button id="clear" style="font-size: 15px; margin-bottom: 6px" class="btn"> Clear</button>
           </div>
        </section>
-       <div class="divider"></div>
+       <div class="divider sep"></div>
        <section id="code">
           <h3> code</h3>
             <div class="container">
