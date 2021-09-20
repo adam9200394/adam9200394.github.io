@@ -563,6 +563,7 @@ visualize_btn.addEventListener("click", ()=> {
    
     let h2 = document.createElement('h2');
     let h4 = document.createElement('h4');
+    let h42 = document.createElement('h4');
     h2.innerText = 'System';
     h4.innerText = 'data';
     
@@ -588,8 +589,8 @@ visualize_btn.addEventListener("click", ()=> {
         visualize_div.appendChild(div);
 
     }
-    h4.innerText = 'actions';
-    visualize_div.appendChild(h4);
+    h42.innerText = 'actions';
+    visualize_div.appendChild(h42);
 
     for (let i=0; i < data.actions.length; i++){
         let div = document.createElement('div');
