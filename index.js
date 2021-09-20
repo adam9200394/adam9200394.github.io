@@ -65,9 +65,9 @@ export function getData() {
 
 
 //init pathgroups
-for (let i=0; i < colors.length; i++){
+/* for (let i=0; i < colors.length; i++){
     pathGroups.push(new pathGroup(colors[i]));
-}
+} */
 //console.log(pathGroups)
 
 
@@ -139,7 +139,7 @@ init_btn.addEventListener("click", ()=> {
            
              // work on data
             let reslution = data.segments;
-            console.log(reslution);
+            /*  */
             for(let i=0; i<data.actions.length; i++){
                 let action_btn = document.createElement("button");
                 action_btn.classList.add("action");
@@ -176,7 +176,7 @@ init_btn.addEventListener("click", ()=> {
                 });
                 
             }
-           // console.log(pathGroups)
+            
             
 
         //3d scene content ===========================================================================
@@ -209,7 +209,7 @@ init_btn.addEventListener("click", ()=> {
           
             
             // connect vertex  -------------------------------
-            for (let i=0; i< pathGroups.length; i++){
+           /*  for (let i=0; i< pathGroups.length; i++){
             for(let j=0; j<pointArray.length; j++) {
             if(pathGroups[i].pathColor == pointArray[j].colordata){
                 pathGroups[i].pathElement.push(pointArray[j]);
@@ -232,7 +232,7 @@ init_btn.addEventListener("click", ()=> {
                    
                     
                 
-            });
+            }); */
             
 
 
@@ -430,7 +430,7 @@ for(let i=0; i< bones; i++) {
          }
         effector = { bone, value };
         data.effectors.push(effector);
-        //console.log(data.effectors);
+        /* console.log(data.effectors); */
           
        }
        
@@ -548,16 +548,70 @@ visualize_btn.addEventListener("click", ()=> {
     x.classList.add('text');
     x.classList.add('x');
     x.innerText = "X";
-    x.addEventListener("click", () => {
-        visualize_div.classList.add('collabse');
-        visualize_div.removeChild(x);
-        visualize_div.removeChild(h2);
-    });
+   
     let h2 = document.createElement('h2');
-    h2.innerText = 'System data';
+    let h4 = document.createElement('h4');
+    h2.innerText = 'System';
+    h4.innerText = 'data';
     
     visualize_div.appendChild(x);
     visualize_div.appendChild(h2);
+    visualize_div.appendChild(h4);
+    for (let i=0; i < data.effectors.length; i++){
+        let div = document.createElement('div');
+        let com = document.createElement('p');
+        com.classList.add('white-text');
+        div.classList.add('horz');
+        com.innerText = data.effectors[i].bone;
+        let div2 = document.createElement('div');
+        for(let j=0; j<data.effectors[i].value.length; j++){
+            let txt = document.createElement('p');
+            txt.classList.add('inline');
+            txt.classList.add('text');
+            txt.innerText = data.effectors[i].value[j];
+            div2.appendChild(txt);
+        }
+        div.appendChild(com);
+        div.appendChild(div2);
+        visualize_div.appendChild(div);
+
+    }
+    h4.innerText = 'actions';
+    visualize_div.appendChild(h4);
+
+    for (let i=0; i < data.actions.length; i++){
+        let div = document.createElement('div');
+        let com = document.createElement('p');
+        com.classList.add('white-text');
+        div.classList.add('horz');
+        com.innerText = data.actions[i].action_name;
+        let div2 = document.createElement('div');
+        let txt2 = document.createElement('p');
+        txt2.classList.add("white-text");
+        txt2.classList.add("inline");
+        txt2.innerText = 'dominance ' + (Math.random() * Math.random());
+        for(let j=0; j<data.actions[i].values.length; j++){
+            let txt = document.createElement('p');
+            txt.classList.add('inline');
+            txt.classList.add('text');
+            txt.innerText =  data.actions[i].values[j];
+            div2.appendChild(txt);
+            
+        }
+     
+        div.appendChild(com);
+        div.appendChild(txt2);
+        div.appendChild(div2);
+        visualize_div.appendChild(div);
+
+    }
+   
+    
+
+    x.addEventListener("click", () => {
+       visualize_div.innerHTML = ''
+        visualize_div.classList.add('collabse');
+    });
 });
 
 
