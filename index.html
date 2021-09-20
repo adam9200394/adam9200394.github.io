@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="./style.css" >
 </head>
 <body>
+    <div id="visualize-div" class="collabse"></div>
     <div  class="content visiblity" id="left-content">
         <h4 class="inline">data</h4>
-        <button id="visualize" class="btn">visualize</button>
+        <button id="visualize" class="btn">report</button>
         <div id="data-div"></div>
-        <div id="visualize-div" class="visualize-div"></div>
+       
     </div>
     
     <div id="threeDCanvas" class="closed black">
@@ -35,7 +36,7 @@
        </div>
        <h3>enter system arttibute you want for the simulation</h3>
        <br>
-       <h4>mechanical arrtibutes</h4>
+       <h4>mechanical components</h4>
        <div class="section">
             <div class="sub-section">
                 <div class="label-input">
@@ -50,7 +51,7 @@
             </div>
        </div>
        
-        <h4>network arrtibutes</h4>
+        <h4>network attirbutes</h4>
         <div class="section">
             <div class="sub-section">   
                 <div class="label-input">
@@ -67,7 +68,7 @@
 
         <h4>enter actions to be simulated</h4>
         <button id="new-action-btn" class="btn btn-small">new action</button>
-        <div class="section" id="new-action">
+        <div class="section visiblity" id="new-action">
 
         </div>
         
@@ -80,7 +81,7 @@
 
     <div class="content visiblity" id="top-content">
         <div id="play-btn" class="centered-div">
-            <p class="white-text centered-div" >play</p>
+            <p class="white-text text-t " >start</p>
             <i class="small btn material-icons indigo lighten-5">play_circle_outline</i>
         </div>
     

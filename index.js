@@ -138,7 +138,7 @@ init_btn.addEventListener("click", ()=> {
             }
            
              // work on data
-            let reslution =parseInt(pointArray.length / data.segments);
+            let reslution = data.segments;
             console.log(reslution);
             for(let i=0; i<data.actions.length; i++){
                 let action_btn = document.createElement("button");
@@ -306,15 +306,41 @@ readyOne_btn.addEventListener("click", () => {
   let groups = data.groups;
   let bones = data.bones;
   let div = document.createElement("div");
-  let h4 = document.createElement("h4");
-  h4.innerText = "define realshionships : ";
-  div.appendChild(h4);
   div.classList.add("sub-section");
   div.classList.add("pop-section");
   div.classList.add("closed");
   div.classList.add("visiblity");
 
-  
+  if(bones > groups) {
+      let msg = document.createElement("p");
+      msg.classList.add("error-msg");
+      msg.innerText = "bone number cannot be bigger that muscle groups."
+      div.appendChild(msg);
+      div.id = 'ready_one_error';
+      div.classList.remove("visiblity");
+      div.classList.remove("closed");
+      div.classList.add("open");
+      for(let i=0; i < document.getElementsByClassName("section")[0].children.length; i++) {
+        if( document.getElementsByClassName("section")[0].children[i].id == "ready_one_error"){
+          return;
+        }
+    }
+      document.getElementsByClassName("section")[0].appendChild(div);
+      return;
+  }
+  let h4 = document.createElement("h4");
+  let note = document.createElement("p");
+  h4.innerText = "define realshionships : ";
+  h4.classList.add('white-text')
+  div.appendChild(h4); 
+  note.innerText = "0% no effect at all to 100% full effect";
+  note.classList.add("note-light");
+  div.appendChild(note);
+  for(let i=0; i < document.getElementsByClassName("section")[0].children.length; i++) {
+      if( document.getElementsByClassName("section")[0].children[i].id == "ready_one_error"){
+        document.getElementsByClassName("section")[0].removeChild(document.getElementsByClassName("section")[0].children[i]);
+      }
+  }
   
   if(!init_ready) document.getElementsByClassName("section")[0].appendChild(div);
   init_ready = true;
@@ -358,7 +384,9 @@ for(let i=0; i< bones; i++) {
   let btn_2 = document.createElement("button");
   let div3 = document.createElement("div");
   btn_1.classList.add("btn");
+  btn_1.classList.add("btn-pop");
   btn_2.classList.add("btn");
+  btn_2.classList.add("btn-pop");
   btn_1.innerText = "  ok  ";
   btn_2.innerText = " rest ";
   div3.appendChild(btn_1);
@@ -397,7 +425,6 @@ for(let i=0; i< bones; i++) {
 
             if(div.children[i].children[j].tagName == "P"){
                 bone = div.children[i].children[j].innerText;
-                ///////bookmark
               }
 
          }
@@ -432,10 +459,12 @@ new_action_btn.addEventListener("click", ()=> {
     getData();
     let section = document.getElementById("new-action");
     let div = document.createElement('div');
+    div.classList.add("padding");
     let div2  = document.createElement('div');
     let input = document.createElement("input"); 
     let save_btn = document.createElement("button");  
     if(!init_ready) {
+        section.classList.remove('visiblity');
         let error_msg = document.createElement('p');
         error_msg.innerText = "save the mechinceal arttibutes first to initiate actions (press ready button).";
         error_msg.classList.add('centered-text');
@@ -455,7 +484,7 @@ new_action_btn.addEventListener("click", ()=> {
             }
         }
         
-       
+        section.classList.remove('visiblity');
         input.type = 'text';
         input.name = 'action-name';
         input.id = 'action-name';
@@ -496,7 +525,7 @@ new_action_btn.addEventListener("click", ()=> {
             let action = {action_name: name, values }
         
           let saved = document.createElement("p");
-          saved.innerText = 'action name: ' + action.action_name + ' saved';
+          saved.innerHTML = 'action : <span class="saved-action-name">' + action.action_name + '</span> saved';
           div.removeChild(input);
           div.removeChild(save_btn);
           div.removeChild(div2);
@@ -513,7 +542,23 @@ new_action_btn.addEventListener("click", ()=> {
 
 });
 
-
+visualize_btn.addEventListener("click", ()=> {
+    visualize_div.classList.remove('collabse');
+    let x = document.createElement('p');
+    x.classList.add('text');
+    x.classList.add('x');
+    x.innerText = "X";
+    x.addEventListener("click", () => {
+        visualize_div.classList.add('collabse');
+        visualize_div.removeChild(x);
+        visualize_div.removeChild(h2);
+    });
+    let h2 = document.createElement('h2');
+    h2.innerText = 'System data';
+    
+    visualize_div.appendChild(x);
+    visualize_div.appendChild(h2);
+});
 
 
 

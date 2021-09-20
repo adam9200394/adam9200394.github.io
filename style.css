@@ -24,16 +24,21 @@ input[type="range"]   {
     } 
 
 h2, h3, h4{
-    color: rgb(106, 131, 107);
+    color: rgb(82, 102, 82);
     font-weight: normal;
     margin: 12px;
+    margin-top: 15px;
+}
+h2 {
+    font-size: xx-large;
 }
 h3 {
-    font-size: larger;
+    font-size: x-large;
 }
 h4 {
-    font-size: large;
+    font-size: larger;
 }
+
 #threeDCanvas {
 transition: all .4s linear;
 cursor: crosshair;
@@ -70,6 +75,7 @@ z-index: 2;
     position: absolute;
     bottom: 0%;
     z-index: 2;
+    padding-bottom: 10px;
 
    
     
@@ -88,10 +94,11 @@ z-index: 2;
 #init-btn {
     padding: 8px;
     text-align: center;
-    font-size: 17px;
+    font-size: 15px;
     padding-top: 12px;
     padding-bottom: 12px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif    
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    margin-bottom: 5;
 
 }
 
@@ -101,7 +108,7 @@ z-index: 2;
 
 #right-content {
     position: absolute;
-    left: 85%;
+    left: 90%;
     top: 20px;
 }
 #left-content {
@@ -133,14 +140,20 @@ z-index: 2;
     cursor: pointer;
     margin-top: 6px;
     margin-bottom: 6px;
-    border-radius: 8px;
+    border-radius: 4px;
     border: .1px solid grey;
     height: max-content;
     margin-left: 5px;
     margin-right: 5px;
-    padding: 3px;
-    background-color: rgb(96, 114, 96);;
+    background-color: rgb(96, 114, 96);
+    color: white;
+    font-size: 11px;
+    padding: 0 10px;
+    box-shadow: none
  
+}
+.btn-pop {
+    background-color: rgb(144, 185, 147); ;
 }
 .btn:hover {
     background-color: rgb(139, 161, 139);;
@@ -156,15 +169,21 @@ z-index: 2;
     box-shadow: 10px 10px rgba(128, 128, 128, 0.123);
 }
 .section {
-    margin-top: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color:rgb(144, 185, 147);
+    border-radius: 4px;
+    width: 75%;
+    padding: 8px;
+    box-shadow:0 10px 10px 0 rgba(0,0,0,0.14),0 5px 5px -2px rgba(0,0,0,0.12),0 10px 10px 0 rgba(0,0,0,0.2);
    
 }
 
 .sub-section {
-    margin-top: 8px;
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,9 +191,16 @@ z-index: 2;
     transition: all .4s linear;
 
 }
+.effector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
 .pop-section {
    flex-direction: column;
-   background-color: cadetblue;
+   background-color: rgb(102, 133, 105);;
    border-radius: 8px;
    width: 70%;
 }
@@ -194,6 +220,11 @@ z-index: 2;
     background-color: whitesmoke;
     border: .1px solid grey;
     padding-left: 8px;
+    color: rgb(62, 62, 247);
+  
+}
+.input-text::placeholder {
+    color: rgb(255, 253, 253);
 }
 input { 
     background-color: rgb(207, 211, 207);
@@ -262,4 +293,51 @@ input:focus {
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin: 2px;
+}
+.darker {
+    color: rgb(81, 99, 81);;
+}
+.note  {
+    color: rgb(111, 111, 255);
+    font-weight: bold;
+}
+.note-light {
+    color: rgb(184, 184, 248);
+}
+.collabse {
+    visibility: collapse;
+}
+.padding {
+    padding-left: 15px;
+}
+.saved-action-name {
+    color: rgb(36, 36, 252);
+}
+#actions-div {
+    display: flex;
+    flex-direction: column;
+}
+
+#visualize-div  {
+    background-color:rgb(178, 206, 179);
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    
+}
+.x {
+    position:absolute;
+    top: 1.5%;
+    left: 95%;
+    font-size: 30px;
+    cursor: pointer;
+    color: black;
+    z-index: 4;
+    
+}
+.text-t {
+    margin: 0;
 }
