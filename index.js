@@ -34,6 +34,7 @@ const topContent = document.getElementById("top-content");
 const data_div = document.getElementById("data-div");
 const visualize_div = document.getElementById("visualize-div");
 const actions_div = document.getElementById("actions-div");
+const toast_div = document.getElementById("toast");
 //const btn_color = document.getElementById("btn_color");
 
 //value varibles ==================================================
@@ -162,9 +163,15 @@ init_btn.addEventListener("click", ()=> {
 
                 pathGroups.push(g);
                
-                action_btn.addEventListener("click", () => {
+                action_btn.addEventListener("click", (e) => {
                     const vertexLine = [];
                     //console.log(action_point_arry);
+                    let text = document.createElement('p');
+                    text.classList.add("text");
+                    text.classList.add("white-text");
+                    text.classList.add("toast");
+                    text.classList.add("inline");
+                    text.innerText = e.target.id + "action + 1";
                     for(let k=0; k< action_point_arry.length; k++){
                         let pointVertex = createVertex(action_point_arry[k].obj.position);
                         vertexLine.push(pointVertex);  
@@ -172,6 +179,11 @@ init_btn.addEventListener("click", ()=> {
                     
                     let line = draw(vertexLine, colors[Math.floor(Math.random() * colors.length)] );
                     scene.add(line);
+                    bottomContent.appendChild(text);
+                   
+                    setTimeout(() => {
+                        bottomContent.removeChild(text);
+                    }, 1500);
                     
                 });
                 
@@ -236,7 +248,7 @@ init_btn.addEventListener("click", ()=> {
             
 
 
-            bottomContent.innerHTML = `<p class="text"> parameters: ${param}    pathgroups: ${pathGroups.length} </p>`;
+            bottomContent.innerHTML = `<p class="text inline"> parameters: ${param} </p>`;
             data_div.innerHTML = `<h4> arttibutes: </h4> <p class="sub-text"> muscle-groups : ${data.groups} </p>  <p class="sub-text">bones : ${data.bones}</p>  <p class="sub-text">segments : ${data.segments}</p>`
 
 

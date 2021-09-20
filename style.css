@@ -123,6 +123,7 @@ z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
 }
 #top-content {
     position:absolute;
@@ -348,4 +349,11 @@ input:focus {
 .horz {
     display: flex;
     flex-direction: column;
+}
+.toast {
+    background-color: rgb(73, 73, 73);
+    border-radius: 50px;
+    opacity: .8;
+    top: 0px;    
+ 
 }
