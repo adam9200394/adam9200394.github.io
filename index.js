@@ -35,6 +35,7 @@ const data_div = document.getElementById("data-div");
 const visualize_div = document.getElementById("visualize-div");
 const actions_div = document.getElementById("actions-div");
 const toast_div = document.getElementById("toast");
+const attr_div = document.getElementById("attr-div");
 //const btn_color = document.getElementById("btn_color");
 
 //value varibles ==================================================
@@ -171,7 +172,7 @@ init_btn.addEventListener("click", ()=> {
                     text.classList.add("white-text");
                     text.classList.add("toast");
                     text.classList.add("inline");
-                    text.innerText = e.target.id + "action + 1";
+                    text.innerText = e.target.id + " + 1";
                     for(let k=0; k< action_point_arry.length; k++){
                         let pointVertex = createVertex(action_point_arry[k].obj.position);
                         vertexLine.push(pointVertex);  
@@ -342,11 +343,14 @@ readyOne_btn.addEventListener("click", () => {
   }
   let h4 = document.createElement("h4");
   let note = document.createElement("p");
+  let set_attr_btn = document.createElement("button");
   h4.innerText = "define realshionships : ";
   h4.classList.add('white-text')
   div.appendChild(h4); 
   note.innerText = "0% no effect at all to 100% full effect";
   note.classList.add("note-light");
+  set_attr_btn.innerText = "set component attributes";
+  set_attr_btn.classList.add('btn');
   div.appendChild(note);
   for(let i=0; i < document.getElementsByClassName("section")[0].children.length; i++) {
       if( document.getElementsByClassName("section")[0].children[i].id == "ready_one_error"){
@@ -418,9 +422,10 @@ for(let i=0; i< bones; i++) {
     let text = document.createElement('p');
     text.classList.add("text");
     text.classList.add("inline");
-    text.innerText = "arttibutes setted.";
+    text.innerText = "components ready.";
     div3.appendChild(text);
     div3.appendChild(btn_2);
+    div3.appendChild(set_attr_btn);
     div3.classList.add("centered");
     setTimeout(() => {
         document.getElementsByClassName("section")[0].appendChild(div3);
@@ -443,12 +448,16 @@ for(let i=0; i< bones; i++) {
         effector = { bone, value };
         data.effectors.push(effector);
         /* console.log(data.effectors); */
-          
-       }
-       
-       
+       }      
    }
 
+   set_attr_btn.addEventListener("click", ()=> {
+    attr_div.classList.remove("collabse");
+    attr_div.classList.remove("closed");
+    attr_div.classList.add("open");
+    setattr();
+
+  });
    
   });
 
@@ -626,6 +635,69 @@ visualize_btn.addEventListener("click", ()=> {
         visualize_div.classList.add('collabse');
     });
 });
+
+function setattr () {
+    let btn = document.createElement("button");
+    let div = document.createElement("div");
+    let div2 = document.createElement("div");
+    let div3 = document.createElement("div");
+    for(let i=0; i<data.effectors.length; i++){
+        let text = document.createElement("p");
+        let input = document.createElement("input");
+        let label = document.createElement("label");
+        input.id = data.effectors[i].bone;
+        input.type = "number";
+        input.classList.add("text");
+        input.classList.add("inline");
+        input.classList.add("y");
+        input.value = .1;
+        input.min = .01;
+        input.step =.1;
+        text.classList.add('text');
+        text.innerText = data.effectors[i].bone;
+        label.for = data.effectors[i].bone;
+        label.innerText = "wieght.kg";
+        div2.appendChild(text);
+        div2.appendChild(label);
+        div2.appendChild(input);
+        
+    }
+    for(let i=0; i<data.groups; i++){
+        let text = document.createElement("p");
+        let input = document.createElement("input");
+        let label = document.createElement("label");
+        input.id =  'group.'+ i;
+        input.type = "number";
+        input.classList.add("text");
+        input.classList.add("inline");
+        input.classList.add("y");
+        input.value = .1;
+        input.min = .01;
+        input.step =.1;
+        text.classList.add('text');
+        text.innerText = 'group.'+ i;
+        label.for =   'group.'+ i;
+        label.innerText = "strength.newton";
+        div3.appendChild(text);
+        div3.appendChild(label);
+        div3.appendChild(input);
+        
+    }
+    div.appendChild(div2);
+    div.appendChild(div3);
+    div.classList.add("inside-inside");
+    btn.innerText = "close";
+    btn.classList.add("btn");
+    attr_div.children[0].appendChild(div);
+    attr_div.children[0].appendChild(btn);
+    btn.addEventListener("click", ()=> {
+        attr_div.children[0].innerHTML = '';
+        attr_div.classList.remove("open");
+        attr_div.classList.add("collabse");
+        attr_div.classList.add("set");
+       
+    });
+}
 
 
 

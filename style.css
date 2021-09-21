@@ -38,6 +38,12 @@ h3 {
 h4 {
     font-size: larger;
 }
+input[type="range"] {
+    background-color: whitesmoke !important;
+    margin: 8px 0;
+    cursor: ew-resize;
+    background: whitesmoke !important;
+}
 
 #threeDCanvas {
 transition: all .4s linear;
@@ -175,7 +181,7 @@ z-index: 2;
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color:rgb(144, 185, 147);
+    background-color:rgb(229, 250, 231);
     border-radius: 4px;
     width: 75%;
     padding: 8px;
@@ -349,6 +355,8 @@ input:focus {
 .horz {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .toast {
     background-color: rgb(73, 73, 73);
@@ -356,4 +364,41 @@ input:focus {
     opacity: .8;
     top: 0px;    
  
+}
+
+#attr-div {
+    position:absolute;
+    z-index: 3;
+    transition: all .4s linear;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+   
+}
+.inside {
+    border-radius: 4px;
+    width: 80%;
+    height: 80%;
+    opacity: 1;
+    background-color:rgb(178, 206, 179);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(144, 185, 147);
+    overflow: auto;
+}
+.inside-inside {
+    display: flex;
+    justify-content: space-around;
+    width: inherit;
+   
+}
+.y {
+    width: 55px !important;
+}
+.grey-text {
+    color: grey;
 }
