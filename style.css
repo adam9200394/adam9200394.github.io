@@ -6,10 +6,14 @@ body {
 }
 p {
     margin: 12px;
+    color: rgb(85, 85, 85);
 }
 label {
     text-align: center;
     color: whitesmoke;
+}
+li {
+    color: rgb(85, 85, 85);
 }
 
 input[type="range"]   {
@@ -401,4 +405,10 @@ input:focus {
 }
 .grey-text {
     color: grey;
+}
+
+.m-l-r {
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 18px;
 }

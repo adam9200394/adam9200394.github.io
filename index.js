@@ -102,7 +102,9 @@ init_btn.addEventListener("click", ()=> {
         }
       
     } else {
-
+        window.addEventListener("popstate", ()=> {
+            history.pushState(null,null,window.location.pathname);
+        }, false)
         canvas.classList.add("open");
         canvas.classList.remove('closed')
         init_btn.innerText = "";
