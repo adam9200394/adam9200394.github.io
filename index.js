@@ -23,6 +23,7 @@ const init_btn = document.getElementById("init-btn");
 const play_btn = document.getElementById("play-btn");
 const visualize_btn = document.getElementById("visualize");
 const readyOne_btn = document.getElementById("ready-one");
+const readytwo_btn = document.getElementById("ready-two");
 export const new_action_btn = document.getElementById("new-action-btn");
 // html elements controller
 const canvas = document.getElementById("threeDCanvas");
@@ -36,6 +37,10 @@ const visualize_div = document.getElementById("visualize-div");
 const actions_div = document.getElementById("actions-div");
 const toast_div = document.getElementById("toast");
 const attr_div = document.getElementById("attr-div");
+const system_data_left = document.getElementById("system-data-left");
+const net_atrr = document.getElementById("net-atrr");
+const mech_comp = document.getElementById("mech-comp");
+
 //const btn_color = document.getElementById("btn_color");
 
 //value varibles ==================================================
@@ -378,8 +383,51 @@ for(let i=0; i< bones; i++) {
     p.classList.add('text');
     p.innerText = "bone." + i;
     div2.appendChild(p);
+     // xyz begin locations
+     let x = document.createElement('input');
+     let y = document.createElement('input');
+     let z = document.createElement('input');
+     let xyz = document.createElement('div');
+     x.placeholder = "x"
+     y.placeholder = "y"
+     z.placeholder = "z"
+     x.type = "number";
+     y.type = "number";
+     z.type = "number";
+     x.value = 0 + i;
+     y.value = 0;
+     z.value = 0;
+     x.classList.add("small-input");
+     y.classList.add("small-input");
+     z.classList.add("small-input");
+     xyz.classList.add("inline");
+     xyz.appendChild(x)
+     xyz.appendChild(y)
+     xyz.appendChild(z)
+     // xyz end locations
+     let x2 = document.createElement('input');
+     let y2 = document.createElement('input');
+     let z2 = document.createElement('input');
+     let xyz2 = document.createElement("div");
+     x2.placeholder = "x"
+     y2.placeholder = "y"
+     z2.placeholder = "z"
+     x2.type = "number";
+     y2.type = "number";
+     z2.type = "number";
+     x2.value = 1 + i;
+     y2.value = 0;
+     z2.value = 0;
+     x2.classList.add("small-input");
+     y2.classList.add("small-input");
+     z2.classList.add("small-input");
+     xyz2.classList.add("inline");
+     xyz2.appendChild(x2);
+     xyz2.appendChild(y2);
+     xyz2.appendChild(z2);
     for(let j=0; j<groups; j++){
         let input = document.createElement('input');
+       //  // // // // // 
         let label =  document.createElement('label');
         input.classList.add('input-text');
         input.type = "range";
@@ -390,10 +438,15 @@ for(let i=0; i< bones; i++) {
         label.for = 'group.' +j ;
         label.innerText = 'group.' +j;
        /*  input.placeholder = 'group ' +j + ' effect'; */
+        
         div2.appendChild(input);
         div2.appendChild(label);
+       
     }
+
     div.appendChild(div2);
+    div.appendChild(xyz);
+    div.appendChild(xyz2);
     div.appendChild(divider);
 
   }
@@ -458,6 +511,7 @@ for(let i=0; i< bones; i++) {
     attr_div.classList.remove("closed");
     attr_div.classList.add("open");
     setattr();
+    setData();
 
   });
    
@@ -476,6 +530,23 @@ for(let i=0; i< bones; i++) {
   });
 
  
+});
+
+readytwo_btn.addEventListener("click", ()=> {
+    net_atrr.innerHTML = "";
+    getData();
+    let text = document.createElement('p');
+    let text2 = document.createElement('p');
+    
+    console.log(data);
+    text.innerText = ">parameters: " + data.param ;
+    text2.innerText = ">resluation: " + data.segments ; 
+
+    net_atrr.appendChild(text);
+    net_atrr.appendChild(text2);
+    console.log("CLIC");
+   
+
 });
 
 new_action_btn.addEventListener("click", ()=> {
@@ -545,17 +616,38 @@ new_action_btn.addEventListener("click", ()=> {
                     values.push( div2.children[i].value );
                 }
             }
-            let action = {action_name: name, values }
+         let action = {action_name: name, values }
         
           let saved = document.createElement("p");
+          saved.classList.add("white-text");
           saved.innerHTML = 'action : <span class="saved-action-name">' + action.action_name + '</span> saved';
+          let div3 = document.createElement("div");
+          div3.id = action.action_name;
+          div3.classList.add("dark-background");
+          div3.appendChild(saved);
           div.removeChild(input);
           div.removeChild(save_btn);
           div.removeChild(div2);
           data.actions.push(action);
-          div.appendChild(saved);
-         // console.log(data)
-          //section.removeChild(div);
+          div.appendChild(div3);
+          div3.addEventListener("click", ()=> {
+            attr_div.classList.remove("collabse");
+            attr_div.classList.remove("closed");
+            attr_div.classList.add("open");
+            let txt_1 = document.createElement("h4");
+            txt_1.innerText = action.action_name;
+            let btn_1 = document.createElement("button");
+            btn_1.classList.add("btn");
+            btn_1.innerText = "ok";
+            attr_div.children[0].appendChild(txt_1);
+            attr_div.children[0].appendChild(btn_1);
+            btn_1.addEventListener("click", ()=> {
+                attr_div.children[0].innerHTML = '';
+                attr_div.classList.remove("open");
+                attr_div.classList.add("collabse");
+                attr_div.classList.add("set"); 
+            });
+          });
         });
     
 
@@ -701,7 +793,15 @@ function setattr () {
     });
 }
 
-
+function setData() {
+    mech_comp.innerHTML = "";
+    let text = document.createElement("p");
+    let text2 = document.createElement("p");
+    text.innerText = ">bones: " + data.bones;
+    text2.innerText = ">muscle groups: " + data.groups;    
+    mech_comp.appendChild(text);
+    mech_comp.appendChild(text2);
+}
 
 
 
