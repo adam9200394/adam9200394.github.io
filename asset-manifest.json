@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.84e564ba.css",
+    "main.js": "/static/js/main.864d9970.js",
+    "static/js/787.6cc2dd43.chunk.js": "/static/js/787.6cc2dd43.chunk.js",
+    "static/media/menu.png": "/static/media/menu.17916d58ee69680192e6.png",
+    "static/media/BMW_logo.png": "/static/media/BMW_logo.71db1d9e5128afb1e7c6.png",
+    "static/media/blender.png": "/static/media/blender.01d0a2ebc14e4224d7d1.png",
+    "static/media/imagel.jpg": "/static/media/imagel.4a696ea3f153ea5c7b53.jpg",
+    "static/media/adopei.jpg": "/static/media/adopei.7885aaea56f9cb77fd18.jpg",
+    "static/media/aftereffects.jpg": "/static/media/aftereffects.5d883b96b2d1d732d48e.jpg",
+    "static/media/nature-logo.png": "/static/media/nature-logo.d72cfb398f24c2ea1992.png",
+    "static/media/illustration-logo.png": "/static/media/illustration-logo.e06f4d64622869314892.png",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.84e564ba.css.map": "/static/css/main.84e564ba.css.map",
+    "main.864d9970.js.map": "/static/js/main.864d9970.js.map",
+    "787.6cc2dd43.chunk.js.map": "/static/js/787.6cc2dd43.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84e564ba.css",
+    "static/js/main.864d9970.js"
+  ]
+}
